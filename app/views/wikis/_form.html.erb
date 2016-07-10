@@ -1,0 +1,13 @@
+<%= simple_form_for @wiki do |f| %>
+
+  <%= f.collection_select :category_id, Category.all, :id, :name, { promt: "Choose a Category" } %>
+
+  <%= f.input :title %>
+
+  <%= f.input :content, placeholder: 'Put content here' %>
+
+  <%= f.submit "Save", class: 'btn btn-success' %>
+  
+  <%= f.check_box :private, {}, false, true %> Make this wiki private
+  
+<% end %>

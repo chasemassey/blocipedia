@@ -1,12 +1,16 @@
-<div class="media">
-  <div class="media-body">
-    <div class="media-heading">
-      <h1><%= @wiki.title %></h1>
-    </div>
-    <p><%= @wiki.body %></p>
-    <%= link_to 'Edit Wiki', edit_wiki_path(@wiki.id), class: 'btn btn-success' %> <br/>
-    <%= link_to 'Delete Wiki', @wiki, class: 'btn btn-danger',
-        method: :delete,
+<h1><%= @wiki.title %></h1>
+<p><%= @wiki.content %></p>
+<small>Category: <%= @wiki.category.name %></small>
+<br>
+  <div class="btn-group">
+    <%= link_to "Back", root_path, class: "btn btn-default" %>
+    <% if user_signed_in? %>
+      <%= link_to 'Edit Wiki', edit_wiki_path(@wiki.id), class: 'btn btn-success' %> 
+      <%= link_to 'Delete Wiki', @wiki, class: 'btn btn-danger', method: :delete,
         data: { confirm: 'Are you sure you want to delete your Wiki'} %>
-  </div>
-</div>
+    <!-- % else %>
+      <!--%= link_to 'Edit Wiki', edit_wiki_path(@wiki.id), class: 'btn btn-success'disabled> %>
+      <!--%= link_to 'Delete Wiki', @wiki, class: 'btn btn-danger'disabled>, method: :delete,
+        data: { confirm: 'Are you sure you want to delete your Wiki'} %> -->
+    <% end %>
+  </div>  
